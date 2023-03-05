@@ -14,7 +14,14 @@ export interface IProduct {
 }
 
 interface IcartContext {
-  filteredProducts: IProduct[];
+  products: IProduct[]
+  openModal: boolean
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export interface IModalOpen {
+  isOpen: boolean
+  setModalOpen: boolean
 }
 
 export const DashboardContext = createContext({} as IcartContext);
@@ -40,6 +47,17 @@ export const DashboardProvider = ({ children }: ICartProviderProps) =>{
     requestProducts();
   }, []);
 
- 
+  return (
+    <DashboardContext.Provider
+      value={{
+        openModal,
+        setOpenModal,
+        products,
+      }}
+    >
+      {children}
+    </DashboardContext.Provider>
+  );
+  
 
 }

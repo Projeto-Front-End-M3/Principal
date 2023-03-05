@@ -45,6 +45,26 @@ export const LoginProvider = ({ children }: iPropsProvider) =>{
     }
   }
 
+  useEffect(() => {
+    const token = localStorage.getItem('@Token')
+    if (token) {
+      const autoLogin = async () => {
+        try {
+          const response = await api.get('/profile', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          })
+          setUser(response.data)
+          navigate('/shop')
+        } catch (error) {
+          console.error(error)
+        } 
+      }
+      autoLogin()
+    }
+  }, [])
+
   return (
     <LoginContext.Provider
       value={{
