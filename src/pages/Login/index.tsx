@@ -1,6 +1,9 @@
-import axios from "axios"
+import {StyledLoginPage} from './styled'
+import { FormLogin } from '../../components/forms/form-login'
 
-export const api = axios.create({
-  baseURL: 'https://hamburgueria-kenzie-v2.herokuapp.com/',
-  timeout: 5000,
-})
+export const LoginPage = () => (
+
+  <StyledLoginPage>
+    <FormLogin/>
+  </StyledLoginPage>
+)

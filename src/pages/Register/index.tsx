@@ -1,6 +1,10 @@
-import axios from "axios"
+import { Link } from 'react-router-dom';
+import {StyledRegisterPage} from './styled'
+import { RegisterForm } from '../../components/forms/form-register';
 
-export const api = axios.create({
-  baseURL: 'https://hamburgueria-kenzie-v2.herokuapp.com/',
-  timeout: 5000,
-})
+export const RegisterPage = () => (
+
+  <StyledRegisterPage>
+    <RegisterForm/>
+  </StyledRegisterPage>
+)

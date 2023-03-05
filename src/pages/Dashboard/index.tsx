@@ -1,6 +1,9 @@
-import axios from "axios"
+import { useContext } from 'react';
+import {StyledDashboardPage} from './styled'
 
-export const api = axios.create({
-  baseURL: 'https://hamburgueria-kenzie-v2.herokuapp.com/',
-  timeout: 5000,
-})
+export const DashboardPage = () => (
+
+  <StyledDashboardPage>
+
+  </StyledDashboardPage>
+)

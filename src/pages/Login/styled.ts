@@ -1,6 +1,3 @@
-import axios from "axios"
+import styled from 'styled-components';
 
-export const api = axios.create({
-  baseURL: 'https://hamburgueria-kenzie-v2.herokuapp.com/',
-  timeout: 5000,
-})
+export const StyledLoginPage = styled.main``
