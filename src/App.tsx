@@ -9,7 +9,6 @@ function App() {
     <div className="App">
       {/* <GlobalStyles/> */}
       <Router/>
-      <h1>Teste</h1>
     </div>
   )
 }
