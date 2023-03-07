@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState, ReactNode } from 'react';
+import { toast } from 'react-toastify';
 import { api } from '../services/axios';
 
 interface ICartProviderProps {
@@ -7,21 +8,24 @@ interface ICartProviderProps {
 
 export interface IProduct {
   category?: string;
-  id: number;
+  id?: number;
   img: string;
   name: string;
   price: number;
 }
 
 interface IcartContext {
-  products: IProduct[]
-  openModal: boolean
-  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>
+  products: IProduct[];
+  openModal: boolean;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  removeProduct: (productId: number) => Promise<void>;
+  addProduct: (product: IProduct) => Promise<void>;
+  updateProduct: (product: IProduct, produtcId: number) => Promise<void>;
 }
 
 export interface IModalOpen {
-  isOpen: boolean
-  setModalOpen: boolean
+  isOpen: boolean;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const DashboardContext = createContext({} as IcartContext);
@@ -29,16 +33,13 @@ export const DashboardContext = createContext({} as IcartContext);
 export const DashboardProvider = ({ children }: ICartProviderProps) =>{
 
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([] as IProduct[]);
   
   useEffect(() => {
     async function requestProducts() {
       try {
-        const token = localStorage.getItem('@Token');
-        const response = await api.get('products', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await api.get('/products');
         setProducts(response.data);
       } catch (error) {
         console.error(error);
@@ -47,12 +48,74 @@ export const DashboardProvider = ({ children }: ICartProviderProps) =>{
     requestProducts();
   }, []);
 
+  const removeProduct = async (productId : number) =>{
+    try {
+      const token = localStorage.getItem('@Token');
+      const response = await api.delete(`/products/${productId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+      });
+    
+      const newList = products.filter(product => product.id !== productId)
+      setProducts(newList)
+      toast.success('Produto removido com sucesso')
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const addProduct = async (product : IProduct) =>{
+    try {
+      const token = localStorage.getItem('@Token');
+      const response = await api.post('/products', product , {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+      });
+      setProducts([...products, response.data])
+      toast.success('Produto adicionado com sucesso')
+    } catch (error) {
+      console.error(error)
+      toast.error('Produto já Cadastrado')
+    }
+  }
+
+  const updateProduct = async (product : IProduct, produtcId : number) =>{
+    try {
+      const token = localStorage.getItem('@Token');
+      const response = await api.patch(`/products/${produtcId}`, product , {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+      });
+
+      const updateList = products.map((element) => {
+        if(element.id === produtcId){
+          return {...response.data}
+        }
+        return element
+      })
+      setProducts(updateList)
+
+      toast.success('Produto atualizado com sucesso')
+    } catch (error) {
+      console.error(error)
+      toast.error('Produto já Cadastrado')
+    }
+  }
+
+ 
+
   return (
     <DashboardContext.Provider
       value={{
         openModal,
         setOpenModal,
         products,
+        removeProduct,
+        addProduct,
+        updateProduct
       }}
     >
       {children}
@@ -61,3 +124,4 @@ export const DashboardProvider = ({ children }: ICartProviderProps) =>{
   
 
 }
+
