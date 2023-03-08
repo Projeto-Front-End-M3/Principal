@@ -35,10 +35,16 @@ export const LoginProvider = ({ children }: iPropsProvider) =>{
     try {
       const response = await api.post('login', data);
       localStorage.setItem('@USERID', response.data.user.id);
-      setUser(response.data.user);
       localStorage.setItem('@Token', response.data.accessToken);
-      toast.success('Usuário logado');
-      navigate('/shop');
+      setUser(response.data.user);
+      console.log(response.data.user)
+      if(response.data.user.isAdm){
+        navigate('/dashboard');
+        toast.success('Adm logado');
+      } else {
+        navigate('/shop');
+        toast.success('Usuário logado');
+      }
     } catch (error) {
       console.error(error);
       toast.error('E-mail ou senha incorretos');
