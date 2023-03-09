@@ -10,7 +10,7 @@ import { DashboardProvider } from './providers/dashboardProvider'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <DashboardProvider> */}
+      <DashboardProvider>
         {/* <ShopProvider> */}
           <LoginProvider>
             <RegisterProvider>
@@ -18,7 +18,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             </RegisterProvider>
           </LoginProvider>
         {/* </ShopProvider> */}
-      {/* </DashboardProvider> */}
+      </DashboardProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

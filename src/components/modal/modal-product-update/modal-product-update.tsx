@@ -1,51 +1,84 @@
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { DashboardContext, IModalOpen } from '../../../providers/dashboardProvider'
-import { ProductsContext } from '../../../providers/productsProvider'
+import { DashboardContext, IProduct, IProductCreate } from '../../../providers/dashboardProvider'
 import { StyledModalUpdateProduct } from './styled' 
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup'
+import { InputControl } from '../inputControl';
 
+const formSchema = yup.object().shape({
+  name: yup.string(),
+  price: yup.number(),
+  img: yup.string().url('Deve ser uma url'),
+  category: yup.string()
+})
 
-export const ModalUpdate = ({ isOpen } : IModalOpen ) =>{
-  const { productRegister } = useContext(ProductsContext)
-  const { setOpenModal } = useContext(DashboardContext)
+export const ModalUpdate = () =>{
+  // const { productRegister } = useContext(ProductsContext)
+  const { openModalUpdate, setOpenModalUpdate, productID, updateProduct } = useContext(DashboardContext)
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm()
+  const { register, handleSubmit, reset, formState: { errors }} = useForm({
+    resolver: yupResolver(formSchema)
+  })
 
-  if (isOpen) {
+  const submit = (data : IProductCreate) =>{
+    updateProduct(data, productID)
+    reset()
+  }
+  if(openModalUpdate === true){
     return (
       <StyledModalUpdateProduct>
         <section >
-          <form onSubmit={handleSubmit(productRegister)}>
-            <div>
-              <p>Cadastrar Produto</p>
-              <button type='button' onClick={()=>setOpenModal(false)}>
+          <form onSubmit={handleSubmit(submit)}>
+            <header>
+              <p>Atualizar Produto</p>
+              <button type='button' onClick={()=>setOpenModalUpdate(false)}>
                 X
               </button>
-            </div>
-            <p>Nome</p>
-            <input
+            </header>
+
+            <InputControl 
               type="text"
-              {...register('title')}
-              placeholder="Tecnologia"
+              idName='name'
+              register={register('name')} 
+              placeholder="Nome do produto"
+              error={errors.name?.message}
             />
-            <p>Selecionar Status</p>
-            <select id="" {...register('status')}>
-              <option value="Iniciante">Iniciante</option>
-              <option value="Intermediário">Intermediário</option>
-              <option value="Avançado">Avançado</option>
-            </select>
+
+            <InputControl 
+              type="number"
+              idName='price'
+              register={register('price')} 
+              placeholder="Preço"
+              error={errors.price?.message}
+            />
+            
+            <InputControl 
+              type="text"
+              idName='img'
+              register={register('img')} 
+              placeholder="Imagem"
+              error={errors.img?.message}
+            />
+                        
+            <InputControl 
+              type="text"
+              idName='category'
+              register={register('category')} 
+              placeholder="Categoria"
+              error={errors.category?.message}
+            />
+
+
             <button className="modal_register" type="submit">
-              Cadastrar Tecnologia
+              update product
             </button>
+
           </form>
         </section>
       </StyledModalUpdateProduct>
     )
+
   }
   return null
-
 }
