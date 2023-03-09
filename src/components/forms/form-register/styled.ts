@@ -1,3 +1,3 @@
 import styled from 'styled-components';
 
-export const StyledFormRegister = styled.form``
+export const StyledFormRegister = styled.div``
