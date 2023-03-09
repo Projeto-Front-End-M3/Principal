@@ -2,7 +2,12 @@ import styled from 'styled-components'
 
 
 export const StyledContainerShowcase =  styled.section`
-
+    width: 100vw;
+    header{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
 
     button{
         cursor: pointer;
@@ -29,6 +34,10 @@ export const StyledContainerShowcase =  styled.section`
             }
         }
 
+    }
+
+    @media screen and (min-width: 1200px){
+        width: 1200px;
     }
 
 `

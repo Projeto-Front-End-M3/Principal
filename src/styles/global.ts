@@ -54,13 +54,15 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background-image: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-tertiary));
+        background: linear-gradient(135deg, var(--color-primary) 65% , var(--color-secondary));
         background-attachment:fixed ;
         height: 100vh;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        position: relative;
     }
+
+
+
     
     button{
         cursor: pointer;

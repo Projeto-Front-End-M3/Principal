@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { DashboardContext } from '../../providers/dashboardProvider'
+import { InputControl } from '../modal/inputControl'
 import { ModalRegister } from '../modal/modal-product-register/modal-product-register'
 import { ModalUpdate } from '../modal/modal-product-update/modal-product-update'
 import { StyledContainerShowcase } from './style'
@@ -7,7 +8,7 @@ import { StyledContainerShowcase } from './style'
 export const ShowcaseProducts = () =>{
     const { setModalRegister, setOpenModalUpdate, products, removeProduct, setProductID, productID } = useContext(DashboardContext)
 
-    const update = (id : number ) =>{
+    const update = (id : any ) =>{
         setOpenModalUpdate(true);
         setProductID(id)
     }
@@ -15,6 +16,8 @@ export const ShowcaseProducts = () =>{
         <StyledContainerShowcase>
 
             <header>
+                <h2>Lista de Produtos</h2>
+                <input/>
                 <button onClick={() => setModalRegister(true)}>+</button>
             </header>
             <ModalRegister/>

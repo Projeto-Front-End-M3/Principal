@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Header } from '../../components/header';
 import { ModalRegister } from '../../components/modal/modal-product-register/modal-product-register';
 import { ModalUpdate } from '../../components/modal/modal-product-update/modal-product-update';
 import { ShowcaseProducts } from '../../components/Showcase';
@@ -10,7 +11,8 @@ export const DashboardPage = () => {
 
   return(
     <StyledDashboardPage>
-        <ShowcaseProducts/>
+      <Header/>
+      <ShowcaseProducts/>
     </StyledDashboardPage>
 
   )
