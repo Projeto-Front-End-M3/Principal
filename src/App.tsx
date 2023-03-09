@@ -1,14 +1,27 @@
-import { useState } from 'react'
 import Router from './routes'
-// import { GlobalStyles } from './styles/global'
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { GlobalStyle, Reset } from './styles/global';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      {/* <GlobalStyles/> */}
       <Router/>
+      <Reset/>
+      <GlobalStyle/>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   )
 }
