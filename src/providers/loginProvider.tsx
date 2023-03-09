@@ -1,8 +1,10 @@
-import { createContext, ReactNode, useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
-import { SubmitHandler } from "react-hook-form";
-import { api } from "../services/axios";
+import { createContext, ReactNode, useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { SubmitHandler } from 'react-hook-form';
+import { api } from '../services/axios';
+import { IUser } from './shopProvider';
+
 
 interface iLoginRequest {
   email: string;
@@ -19,6 +21,7 @@ interface iRegisterSubmit {
 interface iValueLoginContext {
   //userRegister: SubmitHandler<iRegisterSubmit>;
   loginRequest: (data: iLoginRequest) => Promise<void>;
+  user: IUser | null
 }
 
 interface iPropsProvider {
@@ -29,18 +32,19 @@ export const LoginContext = createContext({} as iValueLoginContext);
 
 export const LoginProvider = ({ children }: iPropsProvider) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState([]);
-
+  
+  const [user, setUser] = useState<IUser | null>(null);
+ 
   async function loginRequest(data: iLoginRequest) {
     try {
       const response = await api.post("login", data);
       localStorage.setItem("@USERID", response.data.user.id);
       localStorage.setItem("@Token", response.data.accessToken);
       setUser(response.data.user);
-      console.log(response.data.user);
-      if (response.data.user.isAdm) {
-        navigate("/dashboard");
-        toast.success("Adm logado");
+         
+      if(response.data.user.isAdm){
+        navigate('/dashboard');
+        toast.success('Adm logado');
       } else {
         navigate("/shop");
         toast.success("Usuário logado");
@@ -52,17 +56,20 @@ export const LoginProvider = ({ children }: iPropsProvider) => {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem("@Token");
+    const token = localStorage.getItem('@Token')
+    const id = localStorage.getItem('@USERID')
     if (token) {
       const autoLogin = async () => {
         try {
-          const response = await api.get("/profile", {
+          const response = await api.get(`/users/${id}`, {
             headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
-          setUser(response.data);
-          navigate("/shop");
+              Authorization: `Bearer ${token}`
+            }
+          })
+          
+          setUser(response.data)
+          navigate('/shop')
+
         } catch (error) {
           console.error(error);
         }
@@ -76,6 +83,7 @@ export const LoginProvider = ({ children }: iPropsProvider) => {
       value={{
         // userRegister,
         loginRequest,
+        user
       }}
     >
       {children}
