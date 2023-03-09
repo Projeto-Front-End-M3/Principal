@@ -8,15 +8,29 @@ interface ICartProviderProps {
 
 export interface IProduct {
   category?: string;
-  id?: number;
+  id: number;
   img: string;
   name: string;
   price: number;
 }
 
-interface IcartContext {
+export interface IProductCreate {
+  category?: string;
+  img: string;
+  name: string;
+  price: number;
+}
+
+
+interface IdashboardContext {
   products: IProduct[];
   openModal: boolean;
+  modalRegister: boolean;
+  openModalUpdate: boolean;
+  productID: null | number;
+  setProductID: React.Dispatch<React.SetStateAction<null>>;
+  setOpenModalUpdate: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalRegister: React.Dispatch<React.SetStateAction<boolean>>
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
   removeProduct: (productId: number) => Promise<void>;
   addProduct: (product: IProduct) => Promise<void>;
@@ -28,13 +42,16 @@ export interface IModalOpen {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const DashboardContext = createContext({} as IcartContext);
+export const DashboardContext = createContext({} as IdashboardContext);
 
 export const DashboardProvider = ({ children }: ICartProviderProps) =>{
 
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [openModal, setOpenModal] = useState(true);
-  const [filteredProducts, setFilteredProducts] = useState([] as IProduct[]);
+  const [productID, setProductID] = useState(null)
+  const [openModal, setOpenModal] = useState(false);
+  const [modalRegister, setModalRegister] = useState(false);
+  const [openModalUpdate, setOpenModalUpdate] = useState(false);
+  // const [filteredProducts, setFilteredProducts] = useState([] as IProduct[]);
   
   useEffect(() => {
     async function requestProducts() {
@@ -45,6 +62,7 @@ export const DashboardProvider = ({ children }: ICartProviderProps) =>{
         console.error(error);
       }
     }
+
     requestProducts();
   }, []);
 
@@ -65,7 +83,7 @@ export const DashboardProvider = ({ children }: ICartProviderProps) =>{
     }
   }
 
-  const addProduct = async (product : IProduct) =>{
+  const addProduct = async (product : IProductCreate) =>{
     try {
       const token = localStorage.getItem('@Token');
       const response = await api.post('/products', product , {
@@ -81,7 +99,7 @@ export const DashboardProvider = ({ children }: ICartProviderProps) =>{
     }
   }
 
-  const updateProduct = async (product : IProduct, produtcId : number) =>{
+  const updateProduct = async (product : IProductCreate, produtcId : number) =>{
     try {
       const token = localStorage.getItem('@Token');
       const response = await api.patch(`/products/${produtcId}`, product , {
@@ -115,7 +133,13 @@ export const DashboardProvider = ({ children }: ICartProviderProps) =>{
         products,
         removeProduct,
         addProduct,
-        updateProduct
+        updateProduct,
+        modalRegister,
+        setModalRegister,
+        openModalUpdate,
+        setOpenModalUpdate,
+        productID,
+        setProductID
       }}
     >
       {children}

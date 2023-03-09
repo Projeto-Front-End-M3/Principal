@@ -21,7 +21,7 @@ interface iRegisterSubmit {
 interface iValueLoginContext {
   //userRegister: SubmitHandler<iRegisterSubmit>;
   loginRequest: (data: iLoginRequest) => Promise<void>;
-  user: IUser | null
+  user: IUser | null;
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>
 }
 
@@ -84,7 +84,7 @@ export const LoginProvider = ({ children }: iPropsProvider) => {
       value={{
         setUser,
         loginRequest,
-        user
+        user,
       }}
     >
       {children}
