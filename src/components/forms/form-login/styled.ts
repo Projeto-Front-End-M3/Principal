@@ -29,7 +29,7 @@ export const StyledFormLogin = styled.form`
 
   span {
     font-weight: var(--font-weigth-500);
-    color: var(--grey-20);
+    color: var(--grey-800);
   }
 
   fieldset {
@@ -64,7 +64,7 @@ export const StyledFormLogin = styled.form`
     background-color: var(--color-primary);
     font-size: var(--font-size-14);
     font-weight: var(--font-weigth-600);
-    color: var(--grey-20);
+    color: var(--grey-800);
     padding: 12px;
     display: flex;
     align-items: center;

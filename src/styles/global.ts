@@ -16,10 +16,17 @@ export const GlobalStyle = createGlobalStyle`
         --color-secondary: #39c7df;
         --color-tertiary: #1E1E1E;
         
-        --gray-100: #333333;
-        --grey-50: #828282;
-        --grey-20: #E0E0E0;
-        --grey-0: #F5F5F5;
+        --color-grey-50: #0A0C0D;
+        --color-grey-100: #191C1F;
+        --color-grey-200: #212529;
+        --color-grey-300: #343A40;
+        --color-grey-400: #495057;
+        --color-grey-500: #868E96;
+        --color-grey-600: #ADB5BD;
+        --color-grey-700: #CED4DA;
+        --color-grey-800: #DEE2E6;
+        --color-grey-900: #EDF2FF;
+        --color-grey-1000: #F8F9FA;
 
         font-size: 62.5%;
 
@@ -47,7 +54,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background-image: linear-gradient(180deg, var(--color-primary), var(--color-secondary), var(--color-tertiary));
+        background-image: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-tertiary));
         background-attachment:fixed ;
         height: 100vh;
         display: flex;
