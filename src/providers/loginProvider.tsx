@@ -5,6 +5,7 @@ import { SubmitHandler } from 'react-hook-form';
 import { api } from '../services/axios';
 import { IUser } from './shopProvider';
 
+
 interface iLoginRequest {
   email: string;
   password: string;
@@ -21,6 +22,7 @@ interface iValueLoginContext {
   //userRegister: SubmitHandler<iRegisterSubmit>;
   loginRequest: (data: iLoginRequest) => Promise<void>;
   user: IUser | null
+  setUser: React.Dispatch<React.SetStateAction<IUser | null>>
 }
 
 interface iPropsProvider {
@@ -29,27 +31,28 @@ interface iPropsProvider {
 
 export const LoginContext = createContext({} as iValueLoginContext);
 
-export const LoginProvider = ({ children }: iPropsProvider) =>{
+export const LoginProvider = ({ children }: iPropsProvider) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState<IUser | null>(null);
   
+  const [user, setUser] = useState<IUser | null>(null);
+ 
   async function loginRequest(data: iLoginRequest) {
     try {
-      const response = await api.post('login', data);
-      localStorage.setItem('@USERID', response.data.user.id);
-      localStorage.setItem('@Token', response.data.accessToken);
+      const response = await api.post("login", data);
+      localStorage.setItem("@USERID", response.data.user.id);
+      localStorage.setItem("@Token", response.data.accessToken);
       setUser(response.data.user);
-      
+         
       if(response.data.user.isAdm){
         navigate('/dashboard');
         toast.success('Adm logado');
       } else {
-        navigate('/shop');
-        toast.success('Usuário logado');
+        navigate("/shop");
+        toast.success("Usuário logado");
       }
     } catch (error) {
       console.error(error);
-      toast.error('E-mail ou senha incorretos');
+      toast.error("E-mail ou senha incorretos");
     }
   }
 
@@ -67,23 +70,24 @@ export const LoginProvider = ({ children }: iPropsProvider) =>{
           
           setUser(response.data)
           navigate('/shop')
+
         } catch (error) {
-          console.error(error)
-        } 
-      }
-      autoLogin()
+          console.error(error);
+        }
+      };
+      autoLogin();
     }
-  }, [])
+  }, []);
 
   return (
     <LoginContext.Provider
       value={{
-       // userRegister,
+        setUser,
         loginRequest,
         user
       }}
     >
       {children}
     </LoginContext.Provider>
-  )
-}
+  );
+};
