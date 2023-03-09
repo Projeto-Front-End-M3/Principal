@@ -1,19 +1,19 @@
-import { createContext, ReactNode, useState, useEffect } from 'react';
+import { createContext, ReactNode, useState, useEffect, useContext } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
 import { api } from '../services/axios';
+import { LoginContext } from './loginProvider';
 
 interface IPropsProvider {
   children: ReactNode;
 }
 
 interface IShopContext{
-  user: IUser | null;
   cartProducts: IProduct[];
   products: IProduct[];
   deleteCart(): void
- // userUpdate:  (formData: IFormUserUpdate) => Promise<void>
+  userUpdate:  (formData: IAddressUpdate) => Promise<void>
   addProductsCart: (newProduct: IProduct) => void;
   deleteProductCart: (id: number) => void;
   totalCart: ()=>number
@@ -22,6 +22,10 @@ interface IShopContext{
 interface iLoginRequest {
   email: string;
   password: string;
+}
+
+export interface IAddressUpdate {
+  address: string;
 }
 
 export interface IUser {
@@ -41,10 +45,6 @@ export interface IProduct {
   price: number;
 }
 
-interface IFormUserUpdate {
-
-}
-
 export interface IProduct {
   category?: string;
   id: number;
@@ -57,10 +57,11 @@ export interface IProduct {
 export const ShopContext = createContext({} as IShopContext);
 
 export const ShopProvider = ({ children }: IPropsProvider) =>{
+
+  const {setUser} = useContext(LoginContext)
   
   const navigate = useNavigate();
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [user, setUser] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [cartProducts, setCartProducts] = useState([] as IProduct[]);
 
@@ -77,18 +78,20 @@ export const ShopProvider = ({ children }: IPropsProvider) =>{
   }, []);
 
 
-  // const userUpdate = async (formData: IFormUserUpdate) => {
-  //   try {
-  //     const token = localStorage.getItem('@Token')
-  //     const response = await api.put(`/users`, formData, {
-  //       headers: { Authorization: `Bearer ${token}` }
-  //     })
-  //     setUser({ ...user, ...response })
-  //     setOpenModal(false)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
+  const userUpdate = async (formData: IAddressUpdate) => {
+    try {
+      const token = localStorage.getItem('@Token')
+      const id = localStorage.getItem('@USERID')
+      const response = await api.patch(`/users/${id}`, formData, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      setUser(response.data)
+      //navigate("/shop/dados")
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
 
   function addProductsCart(newProduct: IProduct): void {
     const filterCard = cartProducts.find(
@@ -120,8 +123,9 @@ export const ShopProvider = ({ children }: IPropsProvider) =>{
   return (
     <ShopContext.Provider
       value={{
-        user,
-        //userUpdate,
+        
+        userUpdate,
+        
         products,
         cartProducts,
         addProductsCart,

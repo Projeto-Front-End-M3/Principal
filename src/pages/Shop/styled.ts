@@ -1,3 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledShopPage = styled.main``
+export const StyledShopPage = styled.main`
+
+
+.player{
+}
+`
