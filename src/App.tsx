@@ -1,16 +1,15 @@
-import { useState } from 'react'
 import Router from './routes'
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-// import { GlobalStyles } from './styles/global'
+import { GlobalStyle, Reset } from './styles/global';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div className="App">
-      {/* <GlobalStyles/> */}
       <Router/>
+      <Reset/>
+      <GlobalStyle/>
       <ToastContainer
         position="top-right"
         autoClose={5000}
