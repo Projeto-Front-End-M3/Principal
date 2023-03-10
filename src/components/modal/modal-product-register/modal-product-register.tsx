@@ -72,7 +72,7 @@ export const ModalRegister = () =>{
             />
   
   
-            <button className="modal_register" type="submit">
+            <button className="btn__register" type="submit">
               Cadastrar Produto
             </button>
   

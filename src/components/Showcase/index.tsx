@@ -17,8 +17,7 @@ export const ShowcaseProducts = () =>{
 
             <header>
                 <h2>Lista de Produtos</h2>
-                <input/>
-                <button onClick={() => setModalRegister(true)}>+</button>
+                <button className='btn__create' onClick={() => setModalRegister(true)}>+</button>
             </header>
             <ModalRegister/>
             <ModalUpdate/>
@@ -26,12 +25,17 @@ export const ShowcaseProducts = () =>{
                 {products.map((product) => {
                     return(
                         <li key={product.id}>
-                            <h3>{product.name}</h3>
-                            <p>{product.category}</p>
-                            <p>{product.price}</p>
+                            <div className='container__img'>
+
+                            </div>
+                            <div className='container__info'>
+                                <h3>{product.name}</h3>
+                                <p>{product.price}</p>
+                            </div>
+                            <p className='category__product'>{product.category}</p>
                             <div className='hardware__control'>
-                                <button onClick={() => update(product.id)}>Update</button>
-                                <button onClick={() => removeProduct(product.id)}>Delete</button>
+                                <button className='btn__update' onClick={() => update(product.id)}>Update</button>
+                                <button className='btn__delete' onClick={() => removeProduct(product.id)}>Delete</button>
 
                             </div>
                         </li>
