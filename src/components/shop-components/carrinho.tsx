@@ -8,8 +8,8 @@ export const Cart = () => {
   const { cartProducts, deleteCart, totalCart } = useContext(ShopContext)
 
   return (
-    <main>
-      <ul>
+    <main className='cart_shop'>
+      <ul className='ul_cart'>
       {cartProducts.map(cartProduct =>(
         <CartProductCard key={cartProduct.id} cartProduct={cartProduct}/>
       ))}
@@ -21,8 +21,7 @@ export const Cart = () => {
           currency: 'BRL'
         })}{' '}
       </p>
-      <button onClick={() => deleteCart()}>Remover Todos</button>
-      <h1>Teste carrinhoo</h1>
+      <button className='button_shop' onClick={() => deleteCart()}>Remover Todos</button>
     </main>
   )
 }
