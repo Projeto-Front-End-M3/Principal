@@ -22,7 +22,7 @@ interface iValueUserContext {
 interface iPropsProvider {
   children: ReactNode;
 }
-//const { setUser,user } = useContext(LoginContext)
+
 
 export const RegisterContext = createContext({} as iValueUserContext)
 
@@ -40,13 +40,14 @@ export const RegisterProvider = ({ children }: iPropsProvider) =>{
       email,
       password,
       address,
+      
     };
 
     try {
       const response = await api.post('/register', dataFilter);
       toast.success('Usuário registrado com sucesso');
       
-     // setUser(response.data.user)
+     
       navigate('/');
     } catch (error) {
       console.error(error);
