@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledFormRegister = styled.div`
@@ -105,4 +106,12 @@ form input {
       width:300px ;
     }
 }
+`
+export const LinkReg = styled(Link)`
+  font-size: 1.5rem;
+  font-weight: var(--font-weigth-600);
+  text-decoration: none;
+  color: var(--color-tertiary);
+  font-family: var(--font-family-inter);
+ 
 `
