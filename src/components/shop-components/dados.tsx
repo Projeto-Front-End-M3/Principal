@@ -1,19 +1,18 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { LoginContext } from '../../providers/loginProvider'
 import { ShopContext } from '../../providers/shopProvider'
+import { AddressUpdate } from './form-user'
+
+
 
 export const Address = () => {
 
-  const {user} = useContext(LoginContext)
+const {user} = useContext(LoginContext)
 
-  
   if(user){
     return (
-      <main>
-        <h1>Endereço do indivíduo </h1>
-        <p> {user.name} </p>
-        <p> {user.address} </p>
-        <input type="text" placeholder={user.address}/>
+      <main className='main_dados'>
+        <AddressUpdate/>
       </main>
     )
   }

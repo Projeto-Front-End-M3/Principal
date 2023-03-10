@@ -22,7 +22,7 @@ interface iValueLoginContext {
   //userRegister: SubmitHandler<iRegisterSubmit>;
   loginRequest: (data: iLoginRequest) => Promise<void>;
   user: IUser | null;
-  setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
+  setUser: React.Dispatch<React.SetStateAction<IUser | null>>
 }
 
 interface iPropsProvider {
@@ -82,10 +82,9 @@ export const LoginProvider = ({ children }: iPropsProvider) => {
   return (
     <LoginContext.Provider
       value={{
-        // userRegister,
+        setUser,
         loginRequest,
         user,
-        setUser
       }}
     >
       {children}

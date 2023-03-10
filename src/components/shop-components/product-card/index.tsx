@@ -12,10 +12,10 @@ const {addProductsCart} = useContext(ShopContext)
 
   return (
     <StyledProductCard>
-      <img src="" alt="" />
-      <p> {product.name} </p>
-      <p> Categoria {product.category}</p>
-      <p>Valor R$ {product.price},00</p>
+      <img src={product.img} alt={product.name} />
+      <p className='card_shop'> {product.name} </p>
+      <p className='card_shop'> Categoria: {product.category}</p>
+      <p className='price_shop'> Valor R$ {product.price},00</p>
       <button onClick={() => addProductsCart(product)}>Adicionar</button>
     </StyledProductCard>
   )
