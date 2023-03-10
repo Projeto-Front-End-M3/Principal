@@ -42,40 +42,41 @@ export const RegisterForm = () => {
   })
 
   const submit =  (data: iRegisterSubmit) =>{
-    console.log(data)
+    
     const newData = {...data,isAdm: false}
     userRegister(newData)
-    console.log(newData)
+    
     reset()
   }
 
   return (
   <StyledFormRegister>
     
+      <h2>Cadastre-se</h2>
     <form onSubmit={handleSubmit(submit)}>
-      <div>
+      <div className='divInput'>
         <label htmlFor="name">Nome:</label>
-        <input className='input' type='text' id='name' {...register('name')} />
+        <input className='input' type='text' id='name' {...register('name')} placeholder="Nome"/>
         <p>{errors.name?.message}</p>
       </div>
-      <div>
+      <div className='divInput'>
         <label htmlFor="email">Email:</label>
-        <input className='input' type='email'id='email' {...register('email')} />
+        <input className='input' type='email'id='email' {...register('email')} placeholder="Email"/>
         <p>{errors.email?.message}</p>
       </div>
-      <div>
+      <div className='divInput'>
         <label htmlFor="address">Endereço:</label>
-        <input className='input' type='text' id='address' {...register('address')} />
+        <input className='input' type='text' id='address' {...register('address')} placeholder="Endereço"/>
         <p>{errors.address?.message}</p>
       </div>
-      <div>
+      <div className='divInput'>
         <label htmlFor="password">Senha:</label>
-        <input className='input' type='password' id='password' {...register('password')} />
+        <input className='input' type='password' id='password' {...register('password')} placeholder="Senha"/>
         <p>{errors.password?.message}</p>
       </div>
-      <div>
+      <div className='divInput'>
         <label htmlFor="">Confirmar senha:</label>
-        <input className='input' type='password'  {...register('passwordConfirmation')} />
+        <input className='input' type='password'  {...register('passwordConfirmation')}placeholder="Confirmar senha" />
         <p>{errors.passwordConfirmation?.message}</p>
       </div>
 

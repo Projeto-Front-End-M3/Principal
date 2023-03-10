@@ -61,6 +61,17 @@ export const GlobalStyle = createGlobalStyle`
         position: relative;
     }
 
+    ::-webkit-scrollbar{
+    width: 1px;
+    height: 4px;
+    background-color: var(--color-primary);
+    }
+    ::-webkit-scrollbar-thumb{
+    width: 1px;
+    height: 1px;
+    background-color: var(--color-secondary);
+    }   
+
 
 
     

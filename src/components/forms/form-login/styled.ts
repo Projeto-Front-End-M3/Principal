@@ -3,8 +3,8 @@ import { Link as styledRegister } from "react-router-dom";
 
 export const StyledFormLogin = styled.form`
   width: 100%;
-  max-width: 310px;
-  height: 400px;
+  max-width: 350px;
+  height: 450px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ export const StyledFormLogin = styled.form`
   );
 
   h2 {
-    font-size: var(--font-size-16);
+    font-size: 1.9rem;
     font-weight: var(--font-weigth-600);
     color: var(--color-tertiary);
   }
@@ -33,15 +33,22 @@ export const StyledFormLogin = styled.form`
   }
 
   fieldset {
+    gap: 5px;
     display: flex;
     flex-direction: column;
-    border: none;
-    gap: 5px;
+    width: 235px;
+    border:none;
   }
+  .loginBtn{
+    align-items: center;
+  }
+  label{
+    font-size:13px;
+}
 
   input {
     width: 100%;
-    height: 25px;
+    height: 40px;
     background-image: linear-gradient(
       to top,
       var(--color-secondary),
@@ -59,7 +66,8 @@ export const StyledFormLogin = styled.form`
   button {
     width: 150px;
     border-radius: var(--border-radius);
-    height: 25px;
+    height: 40px;
+    margin-top: 10px;
     border: none;
     background-color: var(--color-primary);
     font-size: var(--font-size-14);
@@ -78,12 +86,35 @@ export const StyledFormLogin = styled.form`
       color: var(--gray-100);
     }
   }
+  @media screen and (min-width: 700px){
+
+max-width: 420px;
+height: 540px;
+
+fieldset{
+  width: 300px;
+}
+button{
+  width: 240px;
+  font-size: 17px;
+}
+h2{
+  font-size: 2.3rem;
+}
+label{
+    font-size:15px;
+}
+
+}
 `;
 
 export const LinkRegister = styled(styledRegister)`
-  font-size: var(--font-size-12);
+  font-size: 1.5rem;
   font-weight: var(--font-weigth-600);
   text-decoration: none;
   color: var(--color-tertiary);
   font-family: var(--font-family-inter);
-`;
+  @media screen and (min-width: 700px){
+    font-size: 1.8rem;
+  }
+`
