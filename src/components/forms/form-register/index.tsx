@@ -2,8 +2,9 @@ import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { StyledFormRegister } from './styled'
+import { LinkReg, StyledFormRegister } from './styled'
 import { RegisterContext } from '../../../providers/registerProvider'
+import { Link } from 'react-router-dom'
 
 interface iRegisterSubmit {
   name: string
@@ -83,6 +84,7 @@ export const RegisterForm = () => {
     <button type='submit'>
       Cadastrar
     </button>
+    <LinkReg to={'/'}>Ir para Login</LinkReg>
     </form>
     
   </StyledFormRegister>
