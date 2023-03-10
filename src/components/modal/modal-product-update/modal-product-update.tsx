@@ -70,7 +70,7 @@ export const ModalUpdate = () =>{
             />
 
 
-            <button className="modal_register" type="submit">
+            <button className="btn__update" type="submit">
               update product
             </button>
 
