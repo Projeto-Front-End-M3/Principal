@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ShopContext, IProduct } from '../../../providers/shopProvider';
-import { StyledProductCard } from "./styled"
+import { StyledProductCardCart } from "./styled"
 
 interface IProductCardProp {
   cartProduct: IProduct
@@ -11,10 +11,10 @@ export const CartProductCard = ({cartProduct}: IProductCardProp) => {
 const {deleteProductCart} = useContext(ShopContext)
 
   return (
-    <li>
-      <img src="" alt="" />
-      <p> Nome {cartProduct.name} </p>
-      <button onClick={() => deleteProductCart(cartProduct.id)}>Remover</button>
-    </li>
+    <StyledProductCardCart>
+      <img className='img_cart' src="" alt="" />
+      <p> {cartProduct.name} </p>
+      <button className='button_cart' onClick={() => deleteProductCart(cartProduct.id)}> Remover </button>
+    </StyledProductCardCart>
   )
 }

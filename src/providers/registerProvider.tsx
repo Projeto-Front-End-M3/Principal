@@ -1,15 +1,18 @@
-import { createContext, ReactNode, useState, useEffect,  } from 'react';
+import { createContext, ReactNode, useState, useEffect, useContext,  } from 'react';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler } from 'react-hook-form';
 import { api } from '../services/axios';
+import { LoginContext } from './loginProvider';
+
 
 interface iRegisterSubmit {
   name: string;
   email: string;
-  endereco: string;
+  address: string;
   password: string;
   passwordConfirmation?: string;
+  isAdm: boolean;
 }
 
 interface iValueUserContext {
@@ -19,6 +22,7 @@ interface iValueUserContext {
 interface iPropsProvider {
   children: ReactNode;
 }
+//const { setUser,user } = useContext(LoginContext)
 
 export const RegisterContext = createContext({} as iValueUserContext)
 
@@ -29,18 +33,20 @@ export const RegisterProvider = ({ children }: iPropsProvider) =>{
     name,
     email,
     password,
-    endereco,
+    address,
   }) => {
     const dataFilter = {
       name,
       email,
       password,
-      endereco,
+      address,
     };
 
     try {
-      const response = await api.post('users', dataFilter);
+      const response = await api.post('/register', dataFilter);
       toast.success('Usuário registrado com sucesso');
+      
+     // setUser(response.data.user)
       navigate('/');
     } catch (error) {
       console.error(error);
