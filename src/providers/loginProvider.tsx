@@ -67,9 +67,14 @@ export const LoginProvider = ({ children }: iPropsProvider) => {
               Authorization: `Bearer ${token}`
             }
           })
-          
-          setUser(response.data)
-          navigate('/shop')
+          if(response.data.isAdm === true){
+            setUser(response.data)
+            navigate('/dashboard')
+          }else{
+            setUser(response.data)
+            navigate('/shop')
+
+          }
 
         } catch (error) {
           console.error(error);

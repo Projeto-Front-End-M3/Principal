@@ -19,8 +19,8 @@ export const AddressUpdate = () => {
     return (
       <form className='form_shop' onSubmit={handleSubmit(userUpdate)}>
         <h2>Endereço</h2>
-        <h3 className='form_shop'> {user.name} </h3>
-        <h3 className='form_shop'> {user.address} </h3>
+        <h3 className='form_shop-info'> {user.name} </h3>
+        <h3 className='form_shop-info'> {user.address} </h3>
         <input className='input_shop' type="text" placeholder='Novo Endereço' {...register('address')}/>
         <button className='button_shop' type='submit'>Atualizar</button>
       </form>

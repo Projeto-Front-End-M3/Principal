@@ -18,3 +18,4 @@ const {deleteProductCart} = useContext(ShopContext)
     </StyledProductCardCart>
   )
 }
+

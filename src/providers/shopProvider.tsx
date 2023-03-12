@@ -75,7 +75,7 @@ export const ShopProvider = ({ children }: IPropsProvider) =>{
       }
     }
     requestProducts();
-  }, []);
+  }, [products]);
 
 
   const userUpdate = async (formData: IAddressUpdate) => {

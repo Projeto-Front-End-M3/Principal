@@ -51,12 +51,44 @@ export const StyledShopPage = styled.main`
     );
   }
 
+  .form_shop-info{
+    border-right: 1px solid rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    padding: 10px;
+    height: 50px;
+    min-width: 330px;
+    box-shadow: 0 4px 4px #00000040;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: var(--color-grey-900);
+    border-radius: 8px;
+  }
+  .form_shop-info::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 3;
+    width: 90px;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    transform: skewX(45deg) translateX(450px);
+    transition: 0.3s;
+  }
+  .form_shop-info:hover::before{
+    transform: skewX(45deg) translateX(-350px);
+  }
+
   .input_shop {
     margin-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80%;
+    width: 330px;
     max-width: 400px;
     height: 40px;
     background-image: linear-gradient(
@@ -98,15 +130,13 @@ export const StyledShopPage = styled.main`
   }
 
   .products_shop{
-    width: 90%;
-    max-width: 700px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     margin-top: 1rem;
     padding: 2rem 0;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
     border-radius: var(--border-radius);
     font-family: var(--font-family-inter);
     gap: 20px;
@@ -116,6 +146,7 @@ export const StyledShopPage = styled.main`
       var(--color-secondary),
       transparent
     );
+    overflow-x: auto;
 
     .card_shop{
       font-weight: var(--font-weigth-600);
@@ -154,6 +185,10 @@ export const StyledShopPage = styled.main`
     align-items: center;
   }
   }
-
+  @media(min-width: 1224px){
+    .products_shop{
+      flex-wrap: wrap;
+    }
+  }
 
 `
