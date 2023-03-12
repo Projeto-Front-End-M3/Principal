@@ -8,11 +8,10 @@ export const RenderProductsUser = () => {
 const {products} = useContext(ShopContext)
 
 return (
-    <ul>
+    <ul className='products_shop'>
       {products.map(product => (
         <ProductCard key={product.id} product={product}/>
       ))}
-      <h1>Teste Produtos</h1>
     </ul>
   )
 }

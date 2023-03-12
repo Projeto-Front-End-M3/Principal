@@ -30,6 +30,14 @@ form{
     width: 235px;
 }
 
+a{
+  margin-top: 30px;
+  font-size: var(--font-size-16);
+  color: var(--color-grey-900);
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
 label{
     font-size:13px;
 }

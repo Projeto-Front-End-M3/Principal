@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
 
         font-size: 62.5%;
 
-        --font-size-38: 3.8rem;
+        --font-size-38: 3.4rem;
         --font-size-28: 2.8rem;
         --font-size-26: 2.6rem;
         --font-size-24: 2.4rem;
@@ -59,6 +59,7 @@ export const GlobalStyle = createGlobalStyle`
         height: 100vh;
         display: flex;
         position: relative;
+        font-family: var(--font-family-inter);
     }
 
     ::-webkit-scrollbar{

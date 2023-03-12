@@ -9,4 +9,5 @@ export const StyledDashboardPage = styled.main`
     align-items: center;
     padding-top: 12vh;
     z-index: 100;
+    font-family: Inter;
 `

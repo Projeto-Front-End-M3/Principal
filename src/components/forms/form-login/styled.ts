@@ -20,6 +20,8 @@ export const StyledFormLogin = styled.form`
     var(--color-secondary),
     transparent
   );
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-left: 1px solid rgba(255,255,255,0.2);
 
   h2 {
     font-size: 1.9rem;
@@ -54,6 +56,7 @@ export const StyledFormLogin = styled.form`
       var(--color-secondary),
       transparent
     );
+    outline: none;
     border: none;
     border-radius: var(--border-radius);
     padding: 10px;
