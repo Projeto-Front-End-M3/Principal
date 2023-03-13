@@ -17,8 +17,31 @@ export const StyledShopPage = styled.main`
     }
 
     .link_page {
-      color: black;
+      color: var(--color-grey-900);
+      text-decoration: none;
       font-weight: var(--font-weigth-600);
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(4px);
+      padding: 10px;
+      border-right: 1px solid rgba(255,255,255,0.4);
+      box-shadow: 0 4px 4px #00000040;
+      overflow: hidden;
+    }
+    .link_page::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 3;
+      width: 90px;
+      height: 100%;
+      background: rgba(255,255,255,0.3);
+      transform: skewX(45deg) translateX(450px);
+      transition: 0.8s;
+    }
+
+    .link_page:hover::before{
+      transform: skewX(45deg) translateX(-350px);
     }
   }
 
