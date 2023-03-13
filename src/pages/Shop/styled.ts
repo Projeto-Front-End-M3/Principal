@@ -11,6 +11,7 @@ export const StyledShopPage = styled.main`
     justify-content: center;
     gap: 10px;
     padding: 1rem;
+    margin-top: 100px;
 
     @media(min-width: 768px){
       gap: 30px;
@@ -50,6 +51,7 @@ export const StyledShopPage = styled.main`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: var(--color-grey-900);
   }
 
   .form_shop {
@@ -66,12 +68,10 @@ export const StyledShopPage = styled.main`
     border-radius: var(--border-radius);
     font-family: var(--font-family-inter);
     gap: 20px;
-    background-image: radial-gradient(
-      circle,
-      var(--color-primary),
-      var(--color-secondary),
-      transparent
-    );
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px #212529, 0 0 40px #343A40, 0 0 80px  #868E96;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
   }
 
   .form_shop-info{
@@ -123,6 +123,7 @@ export const StyledShopPage = styled.main`
     border-radius: var(--border-radius);
     padding: 10px;
     cursor: pointer;
+    outline: none;
     :hover {
       opacity: 0.9;
     }
@@ -163,12 +164,6 @@ export const StyledShopPage = styled.main`
     border-radius: var(--border-radius);
     font-family: var(--font-family-inter);
     gap: 20px;
-    background-image: radial-gradient(
-      circle,
-      var(--color-primary),
-      var(--color-secondary),
-      transparent
-    );
     overflow-x: auto;
 
     .card_shop{
@@ -193,12 +188,11 @@ export const StyledShopPage = styled.main`
     border-radius: var(--border-radius);
     font-family: var(--font-family-inter);
     gap: 20px;
-    background-image: radial-gradient(
-      circle,
-      var(--color-primary),
-      var(--color-secondary),
-      transparent
-    );
+    color: var(--color-grey-900);
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px #212529, 0 0 40px #343A40, 0 0 80px  #868E96;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 
     .ul_cart{
     width: 100%;

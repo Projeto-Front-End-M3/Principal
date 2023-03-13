@@ -34,6 +34,10 @@ export const StyledProductCard = styled.li`
             }
             .container__img{
                 height: 35%;
+
+                img{
+                  width: 280px;
+                }
             }
 
             .container__info{
@@ -44,7 +48,7 @@ export const StyledProductCard = styled.li`
             }
 
             .category__product{
-                width: 100px;
+                width: 140px;
                 height: 20px;
                 background-color: rgba(255,255,255,0.3);
                 border-radius: 4px;

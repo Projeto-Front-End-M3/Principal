@@ -32,7 +32,7 @@ export const StyledProductCardCart = styled.li`
   }
   
   .img_cart{
-    width: 50px;
+    width: 100px;
     height: 50px;
     border-radius: 4px 0 0 4px;
     box-sizing: border-box;
