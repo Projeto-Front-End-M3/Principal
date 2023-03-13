@@ -4,7 +4,8 @@ import { RegisterForm } from '../../components/forms/form-register';
 
 export const RegisterPage = () => (
 
- // <StyledRegisterPage>
+  <StyledRegisterPage>
     <RegisterForm/>
- // </StyledRegisterPage>
+    
+  </StyledRegisterPage>
 )

@@ -29,14 +29,16 @@ export const FormLogin = () => {
     <StyledFormLogin onSubmit={handleSubmit(loginRequest)}>
       <h2>Bem vindo</h2>
       <fieldset>
-        <input type="email" {...register("email")} />
+        <label htmlFor="email">Email:</label>
+        <input type="email" {...register("email")} id="email" placeholder="Email"/>
         <span>{errors.email?.message}</span>
       </fieldset>
       <fieldset>
-        <input type="password" {...register("password")} />
+        <label htmlFor="password">Senha:</label>
+        <input type="password" {...register("password")} id="password" placeholder="Senha"/>
         <span>{errors.password?.message}</span>
       </fieldset>
-      <fieldset>
+      <fieldset className="loginBtn">
         <button type="submit">Entrar</button>
       </fieldset>
       <LinkRegister to="/register">Cadastre-se</LinkRegister>
