@@ -36,7 +36,8 @@ export const StyledProductCard = styled.li`
                 height: 35%;
 
                 img{
-                  width: 280px;
+                  width: 320px;
+                  max-height: 100%;
                 }
             }
 
