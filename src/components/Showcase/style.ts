@@ -102,6 +102,7 @@ export const StyledContainerShowcase =  styled.section`
 
                 img{
                     width: 280px;
+                    max-height: 100%;
                 }
             }
 

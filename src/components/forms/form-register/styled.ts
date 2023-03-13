@@ -31,7 +31,7 @@ form{
 }
 
 a{
-  margin-top: 30px;
+  margin-top: 50px;
   font-size: var(--font-size-16);
   color: var(--color-grey-900);
   letter-spacing: 2px;
