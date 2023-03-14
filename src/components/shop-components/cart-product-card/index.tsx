@@ -12,7 +12,7 @@ const {deleteProductCart} = useContext(ShopContext)
 
   return (
     <StyledProductCardCart>
-      <img className='img_cart' src="" alt="" />
+      <img className={cartProduct.img} src="" alt="" />
       <p> {cartProduct.name} </p>
       <button className='button_cart' onClick={() => deleteProductCart(cartProduct.id)}> Remover </button>
     </StyledProductCardCart>
