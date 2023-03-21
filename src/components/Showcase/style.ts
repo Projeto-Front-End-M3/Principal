@@ -99,6 +99,11 @@ export const StyledContainerShowcase =  styled.section`
             }
             .container__img{
                 height: 35%;
+
+                img{
+                    width: 280px;
+                    max-height: 100%;
+                }
             }
 
             .container__info{

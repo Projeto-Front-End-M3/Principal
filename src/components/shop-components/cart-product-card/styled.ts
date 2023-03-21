@@ -2,16 +2,37 @@ import styled from 'styled-components';
 
 export const StyledProductCardCart = styled.li`
   width: 90%;
-  border: solid 1px black;
-  border-radius: 4px;
+  border-right: 1px solid rgba(255,255,255,0.4);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+  padding: 10px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin: 5px 20px 20px 5px;
+  border-radius: 8px;
+  box-shadow: 0 4px 4px #00000040;
+  overflow: hidden;
+  ::before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 3;
+                width: 90px;
+                height: 100%;
+                background: rgba(255,255,255,0.3);
+                transform: skewX(45deg) translateX(450px);
+                transition: 0.3s;
+            }
+
+  :hover::before{
+                transform: skewX(45deg) translateX(-350px);
+  }
   
   .img_cart{
-    width: 50px;
+    width: 100px;
     height: 50px;
     border-radius: 4px 0 0 4px;
     box-sizing: border-box;

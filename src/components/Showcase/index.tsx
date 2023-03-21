@@ -26,7 +26,7 @@ export const ShowcaseProducts = () =>{
                     return(
                         <li key={product.id}>
                             <div className='container__img'>
-
+                                <img src={product.img}/>
                             </div>
                             <div className='container__info'>
                                 <h3>{product.name}</h3>

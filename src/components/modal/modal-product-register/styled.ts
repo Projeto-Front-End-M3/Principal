@@ -27,7 +27,7 @@ export const StyledModalRegisterProduct = styled.article`
             font-size: 1.2rem;
             border: 1px solid rgba(255,255,255,0.4);
             border-right: 1px solid rgba(255,255,255,0.2);
-            border-right: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
             border-radius: 10px;
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(4px);

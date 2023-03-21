@@ -6,5 +6,6 @@ export const RegisterPage = () => (
 
   <StyledRegisterPage>
     <RegisterForm/>
+    
   </StyledRegisterPage>
 )
