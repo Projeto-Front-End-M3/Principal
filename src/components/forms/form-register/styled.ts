@@ -25,7 +25,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 385px;
+    
     gap: 12px;
     width: 235px;
 }
@@ -91,12 +91,36 @@ form input {
       color: var(--gray-100);
     }
 }
+
+.link_login{
+  width: 150px;
+    border-radius: var(--border-radius);
+    height: 40px;
+    margin-top: 10px;
+    border: none;
+    background-color: var(--color-primary);
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weigth-600);
+    color: var(--grey-800);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    :hover {
+      background-image: linear-gradient(
+        to right,
+        var(--color-secondary),
+        transparent
+      );
+      color: var(--gray-100);
+    }
+}
 @media screen and (min-width: 700px){
   max-width: 420px;
     height: 700px;
 
     form{
-      height: 400px;
+      
       width: 300px;
       
     }

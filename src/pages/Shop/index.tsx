@@ -1,6 +1,6 @@
 import { StyledShopPage } from './styled'
 import { Link, Outlet } from 'react-router-dom'
-import ReactPlayer from 'react-player';
+
 import { Header } from '../../components/header';
 
 export const ShopPage = () => {

@@ -85,10 +85,10 @@ export const RegisterForm = () => {
     <button type='submit'>
       Cadastrar
     </button>
-    </form>
-    <Link to='/'>
+    <Link className='link_login' to='/'>
       Login
     </Link>
+    </form>
   </StyledFormRegister>
   )
 }
