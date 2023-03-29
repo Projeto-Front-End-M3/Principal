@@ -17,12 +17,12 @@ export const ModalUpdate = () =>{
   // const { productRegister } = useContext(ProductsContext)
   const { openModalUpdate, setOpenModalUpdate, productID, updateProduct } = useContext(DashboardContext)
 
-  const { register, handleSubmit, reset, formState: { errors }} = useForm({
+  const { register, handleSubmit, reset, formState: { errors }} = useForm<IProductCreate>({
     resolver: yupResolver(formSchema)
   })
 
   const submit = (data : IProductCreate) =>{
-    updateProduct(data, productID)
+    updateProduct(data, productID as number)
     reset()
   }
   if(openModalUpdate === true){

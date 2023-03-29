@@ -4,8 +4,7 @@ import { ShopContext } from '../../providers/shopProvider'
 import { AddressUpdate } from './form-user'
 
 
-
-export const Address = () => {
+export const Address: any = () => {
 
 const {user} = useContext(LoginContext)
 

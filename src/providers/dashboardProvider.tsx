@@ -16,6 +16,7 @@ export interface IProduct {
 
 export interface IProductCreate {
   category?: string;
+  id: number;
   img: string;
   name: string;
   price: number;
@@ -99,7 +100,7 @@ export const DashboardProvider = ({ children }: ICartProviderProps) =>{
     }
   }
 
-  const updateProduct = async (product : IProductCreate, produtcId : number) =>{
+  const updateProduct = async (product : IProductCreate, produtcId : number ) =>{
     try {
       const token = localStorage.getItem('@Token');
       const response = await api.patch(`/products/${produtcId}`, product , {

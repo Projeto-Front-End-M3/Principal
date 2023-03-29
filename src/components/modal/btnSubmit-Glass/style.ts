@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 
-
-export const StyleContainerBtnGlassMorphism  = styled.div`
+export const StyleContainerBtnGlassMorphism  = styled.div.attrs(props => ({text: "text"}))`
     position: relative;
     padding: 5px;
 

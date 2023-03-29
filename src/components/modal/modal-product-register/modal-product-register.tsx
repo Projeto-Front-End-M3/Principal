@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup'
 import { DashboardContext, IModalOpen, IProduct, IProductCreate } from '../../../providers/dashboardProvider'
-import { ProductsContext } from '../../../providers/productsProvider'
 import { StyledModalRegisterProduct } from './styled' 
 import { InputControl } from '../inputControl';
 
@@ -18,7 +17,7 @@ export const ModalRegister = () =>{
 
   const {  modalRegister, addProduct, setModalRegister } = useContext(DashboardContext)
 
-  const { register, handleSubmit, reset, formState: { errors }} = useForm({
+  const { register, handleSubmit, reset, formState: { errors }} = useForm<IProductCreate>({
     resolver: yupResolver(formSchema)
   })
 

@@ -4,7 +4,7 @@ import { RegisterPage } from './pages/Register'
 import { DashboardPage } from './pages/Dashboard'
 import { ShopPage } from './pages/Shop'
 import { RenderProductsUser} from './components/shop-components/produtos'
-import { Address} from './components/shop-components/dados'
+import { Address } from './components/shop-components/dados'
 import { Cart} from './components/shop-components/carrinho'
 import { ProtectedRoutes } from './pages/ProtectedRoutes'
 

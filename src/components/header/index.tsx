@@ -13,7 +13,7 @@ export const Header = ()=>{
   return(
     <StyledHeader>
       <Logo/>
-      <BtnSubmitGlassMorphism text='logout'/>
+      <BtnSubmitGlassMorphism text={'logout'} />
     </StyledHeader>
   )
 }

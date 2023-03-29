@@ -23,7 +23,7 @@ export const BtnSubmitGlassMorphism = ({ text }: any) =>{
                 <button type="submit" onClick={() => userLogout()}>{text}</button>
             </StyleContainerBtnGlassMorphism>
         )
-    }else if(text === '+'){
+    }else {
         return(
             <StyleContainerBtnGlassMorphism text={text}>
                 <button type="submit" onClick={() => console.log('teste')}>{text}</button>
