@@ -4,7 +4,7 @@ import { LoginContext } from '../../../providers/loginProvider'
 import { IAddressUpdate, ShopContext } from '../../../providers/shopProvider'
 
 
-export const AddressUpdate = () => {
+export const AddressUpdate: any = () => {
   const { user } = useContext(LoginContext)
   const { userUpdate } = useContext(ShopContext)
 

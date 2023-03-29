@@ -6,7 +6,7 @@ import { StyleFieldset } from "./style"
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement>{
     placeholder: string;
     idName: string;
-    error?:  string;
+    error?:  any;
     register: UseFormRegisterReturn<string>;
     type: string;
   }
